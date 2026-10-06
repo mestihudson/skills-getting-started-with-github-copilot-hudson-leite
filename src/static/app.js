@@ -68,7 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
                   throw new Error(result.detail || "Unable to remove participant");
                 }
 
-                await fetchActivities();
+messageDiv.textContent = result.message;
+messageDiv.className = "success";
+messageDiv.classList.remove("hidden");
+setTimeout(() => {
+  messageDiv.classList.add("hidden");
+}, 5000);
+await fetchActivities();
               } catch (error) {
                 messageDiv.textContent = error.message || "Failed to remove participant";
                 messageDiv.className = "error";
